@@ -2,22 +2,19 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Sidebar, MobileSidebar } from './components/Sidebar'
 import { Navbar } from './components/Navbar'
-import { Breadcrumb } from './components/Breadcrumb'
 
 /**
- * Dashboard layout — main ERP shell with sidebar, header, breadcrumb, and content area.
+ * App layout — main application shell with sidebar, navbar, and content area
  * Responsive design with mobile sidebar support
  * 
  * @param {boolean} sidebarCollapsed - Initial sidebar collapsed state
- * @param {boolean} showBreadcrumb - Whether to show breadcrumb
  * @param {React.ReactNode} navbarLeftContent - Custom navbar left content
  * @param {React.ReactNode} navbarRightContent - Custom navbar right content
  * @param {boolean} showFooter - Whether to show footer
  * @param {string} className - Additional classes
  */
-export function DashboardLayout({
+export function AppLayout({
   sidebarCollapsed = false,
-  showBreadcrumb = true,
   navbarLeftContent = null,
   navbarRightContent = null,
   showFooter = false,
@@ -71,17 +68,7 @@ export function DashboardLayout({
 
         {/* Page Content */}
         <main className="flex-1 overflow-auto">
-          <div className="mx-auto w-full p-4 md:p-6 lg:p-8" style={{ maxWidth: 'var(--content-max-width)' }}>
-            {/* Breadcrumb */}
-            {showBreadcrumb && (
-              <div className="mb-4">
-                <Breadcrumb />
-              </div>
-            )}
-
-            {/* Page Content */}
-            <Outlet />
-          </div>
+          <Outlet />
         </main>
 
         {/* Optional Footer */}
@@ -98,11 +85,10 @@ export function DashboardLayout({
 }
 
 /**
- * Dashboard layout without sidebar
- * For simplified dashboard views
+ * App layout without sidebar
+ * For pages that don't need navigation (e.g., full-screen modals, landing pages)
  */
-export function DashboardLayoutWithoutSidebar({
-  showBreadcrumb = true,
+export function AppLayoutWithoutSidebar({
   navbarLeftContent = null,
   navbarRightContent = null,
   showFooter = false,
@@ -118,17 +104,7 @@ export function DashboardLayoutWithoutSidebar({
 
       {/* Page Content */}
       <main className="flex-1 overflow-auto">
-        <div className="mx-auto w-full p-4 md:p-6 lg:p-8" style={{ maxWidth: 'var(--content-max-width)' }}>
-          {/* Breadcrumb */}
-          {showBreadcrumb && (
-            <div className="mb-4">
-              <Breadcrumb />
-            </div>
-          )}
-
-          {/* Page Content */}
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
 
       {/* Optional Footer */}
@@ -143,4 +119,4 @@ export function DashboardLayoutWithoutSidebar({
   )
 }
 
-export default DashboardLayout
+export default AppLayout

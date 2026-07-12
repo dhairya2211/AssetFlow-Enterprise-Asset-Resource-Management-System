@@ -1,5 +1,15 @@
-export { ROUTES, NAV_ITEMS } from './routes'
+export {
+  ROUTES,
+  NAV_ITEMS,
+  ROUTE_CONFIG,
+  USER_ROLES,
+  getRouteConfig,
+  getBreadcrumbTrail,
+  hasRouteAccess,
+} from './routes'
+
 export { API_ENDPOINTS } from './api'
+
 export {
   APP_NAME,
   APP_ENV,

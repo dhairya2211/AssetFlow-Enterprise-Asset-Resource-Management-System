@@ -1,3 +1,8 @@
 export { AppRoutes } from './AppRoutes'
 export { ProtectedRoute } from './ProtectedRoute'
 export { PublicRoute } from './PublicRoute'
+export { RoleProtectedRoute, PermissionProtectedRoute } from './RoleProtectedRoute'
+export { LoadingRoute, PageLoadingRoute, SkeletonLoadingRoute } from './LoadingRoute'
+export { NotFoundPage } from './NotFoundPage'
+export { UnauthorizedPage } from './UnauthorizedPage'
+export { ServerErrorPage } from './ServerErrorPage'

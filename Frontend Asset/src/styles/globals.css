@@ -25,8 +25,8 @@
       'Segoe UI',
       Roboto,
       sans-serif;
-    background-color: rgb(var(--color-background));
-    color: rgb(var(--color-text-primary));
+    background-color: #f8fafc;
+    color: #0f172a;
     line-height: 1.5;
   }
 
@@ -53,7 +53,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--color-primary));
+    outline: 2px solid #3b82f6;
     outline-offset: 2px;
   }
 }
@@ -61,6 +61,6 @@
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: rgb(var(--color-border)) transparent;
+    scrollbar-color: #e2e8f0 transparent;
   }
 }

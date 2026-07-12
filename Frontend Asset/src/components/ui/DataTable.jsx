@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { cn } from '@/utils'
 import { LuArrowUpDown, LuChevronUp, LuChevronDown } from 'react-icons/lu'
+import { Pagination } from './Pagination'
 
 /**
  * Reusable Data Table component with modern enterprise design
@@ -43,7 +44,7 @@ export function DataTable({
   }
 
   const handleSelectAll = () => {
-    if (selectedRows.size === data.length) {
+    if (selectedRows.size === data.length && data.length > 0) {
       setSelectedRows(new Set())
       onSelectionChange?.([])
     } else {
@@ -96,6 +97,14 @@ export function DataTable({
   }
 
   const sortedData = getSortedData()
+
+  // Render pagination if it's an object, otherwise render as-is
+  const renderPagination = () => {
+    if (typeof pagination === 'object' && pagination !== null && !React.isValidElement(pagination)) {
+      return <Pagination {...pagination} />
+    }
+    return pagination
+  }
 
   return (
     <div className={cn('w-full', className)}>
@@ -173,7 +182,7 @@ export function DataTable({
 
       {pagination && (
         <div className="mt-4">
-          {pagination}
+          {renderPagination()}
         </div>
       )}
     </div>

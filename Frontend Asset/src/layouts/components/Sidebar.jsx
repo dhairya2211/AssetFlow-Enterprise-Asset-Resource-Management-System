@@ -15,6 +15,13 @@ import {
   LuChevronDown,
   LuMenu,
   LuX,
+  LuBuilding2,
+  LuArrowRightLeft,
+  LuCalendar,
+  LuCheck,
+  LuSearch,
+  LuBell,
+  LuUser,
 } from 'react-icons/lu'
 
 /**
@@ -51,6 +58,20 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
       ],
     },
     {
+      id: 'allocation',
+      label: 'Allocation',
+      path: '/allocation',
+      icon: LuArrowRightLeft,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER],
+    },
+    {
+      id: 'booking',
+      label: 'Booking',
+      path: '/booking',
+      icon: LuCalendar,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    },
+    {
       id: 'inventory',
       label: 'Inventory',
       path: '/inventory',
@@ -63,15 +84,18 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
       ],
     },
     {
+      id: 'procurement',
+      label: 'Procurement',
+      path: '/procurement',
+      icon: LuBox,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER],
+    },
+    {
       id: 'maintenance',
       label: 'Maintenance',
       path: '/maintenance',
       icon: LuWrench,
       roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER],
-      children: [
-        { id: 'maintenance-work-orders', label: 'Work Orders', path: '/maintenance/work-orders', roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER] },
-        { id: 'maintenance-schedules', label: 'Schedules', path: '/maintenance/schedules', roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR] },
-      ],
     },
     {
       id: 'reports',
@@ -79,6 +103,31 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
       path: '/reports',
       icon: LuTrendingUp,
       roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.VIEWER],
+    },
+    {
+      id: 'audit',
+      label: 'Audit',
+      path: '/audit',
+      icon: LuSearch,
+      roles: [USER_ROLES.ADMIN],
+    },
+    {
+      id: 'notifications',
+      label: 'Notifications',
+      path: '/notifications',
+      icon: LuBell,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    },
+    {
+      id: 'organization',
+      label: 'Organization',
+      path: '/organization',
+      icon: LuBuilding2,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+      children: [
+        { id: 'organization-departments', label: 'Departments', path: '/organization', roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER] },
+        { id: 'organization-employees', label: 'Employees', path: '/organization', roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER] },
+      ],
     },
     {
       id: 'users',
@@ -93,6 +142,13 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
       path: '/settings',
       icon: LuSettings,
       roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER],
+    },
+    {
+      id: 'profile',
+      label: 'Profile',
+      path: '/profile',
+      icon: LuUser,
+      roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
     },
   ]
 

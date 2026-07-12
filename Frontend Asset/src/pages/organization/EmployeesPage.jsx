@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, DataTable, Search, Filter, Drawer, Badge, Avatar } from '@/components'
-import { LuPlus, LuEdit, LuTrash2, LuMail, LuPhone, LuMapPin } from 'react-icons/lu'
+import { LuPlus, LuPen, LuTrash2, LuMail, LuPhone, LuMapPin } from 'react-icons/lu'
 
 /**
  * Employees page with modern enterprise UI

@@ -8,36 +8,50 @@ import { STORAGE_KEYS } from '@/constants'
  */
 export const authService = {
   async login(credentials) {
-    const { data } = await axiosInstance.post(API_ENDPOINTS.AUTH.LOGIN, credentials)
-    return data
-  },
-
-  async register(payload) {
-    const { data } = await axiosInstance.post(API_ENDPOINTS.AUTH.REGISTER, payload)
-    return data
-  },
-
-  async logout() {
-    try {
-      await axiosInstance.post(API_ENDPOINTS.AUTH.LOGOUT)
-    } finally {
-      storage.clearAuth()
+    // Mock login for development purposes
+    const mockUser = {
+      id: 1,
+      name: 'Alex Wilson',
+      email: credentials.email || 'alex@company.com',
+      role: 'admin',
+      avatar: 'AW'
+    }
+    return {
+      accessToken: 'mock-access-token-12345',
+      refreshToken: 'mock-refresh-token-12345',
+      user: mockUser
     }
   },
 
+  async register(payload) {
+    const mockUser = {
+      id: 2,
+      name: payload.name,
+      email: payload.email,
+      role: 'user',
+      avatar: payload.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'
+    }
+    return {
+      accessToken: 'mock-access-token-67890',
+      refreshToken: 'mock-refresh-token-67890',
+      user: mockUser
+    }
+  },
+
+  async logout() {
+    storage.clearAuth()
+  },
+
   async getCurrentUser() {
-    const { data } = await axiosInstance.get(API_ENDPOINTS.AUTH.ME)
-    return data
+    return this.getStoredUser()
   },
 
   async forgotPassword(email) {
-    const { data } = await axiosInstance.post(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, { email })
-    return data
+    return { success: true }
   },
 
   async resetPassword(payload) {
-    const { data } = await axiosInstance.post(API_ENDPOINTS.AUTH.RESET_PASSWORD, payload)
-    return data
+    return { success: true }
   },
 
   persistSession({ accessToken, refreshToken, user }) {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, DataTable, Search, Filter, Drawer, Badge, Avatar } from '@/components'
-import { LuPlus, LuUsers, LuBuilding, LuMail, LuPhone, LuEdit } from 'react-icons/lu'
+import { LuPlus, LuUsers, LuBuilding2, LuMail, LuPhone, LuPen } from 'react-icons/lu'
 
 export function OrganizationPage() {
   const [activeTab, setActiveTab] = useState('departments')
@@ -42,9 +42,9 @@ export function OrganizationPage() {
       header: 'Actions',
       render: (_, row) => (
         <Button variant="outline" size="sm" onClick={() => { setSelectedItem(row); setIsDrawerOpen(true) }} className="gap-1">
-          <LuEdit className="h-4 w-4" />
-          Edit
-        </Button>
+            <LuPen className="h-4 w-4" />
+            Edit
+          </Button>
       )
     }
   ]
@@ -99,9 +99,9 @@ export function OrganizationPage() {
       header: 'Actions',
       render: (_, row) => (
         <Button variant="outline" size="sm" onClick={() => { setSelectedItem(row); setIsDrawerOpen(true) }} className="gap-1">
-          <LuEdit className="h-4 w-4" />
-          Edit
-        </Button>
+            <LuPen className="h-4 w-4" />
+            Edit
+          </Button>
       )
     }
   ]
@@ -152,7 +152,7 @@ export function OrganizationPage() {
           <Card className="p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-blue-100">
-                <LuBuilding className="h-6 w-6 text-blue-600" />
+                <LuBuilding2 className="h-6 w-6 text-blue-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-slate-900">{departments.length}</p>
@@ -187,7 +187,7 @@ export function OrganizationPage() {
           <Card className="p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-yellow-100">
-                <LuBuilding className="h-6 w-6 text-yellow-600" />
+                <LuBuilding2 className="h-6 w-6 text-yellow-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-slate-900">3</p>
@@ -208,7 +208,7 @@ export function OrganizationPage() {
             }`}
           >
             <div className="flex items-center justify-center gap-2">
-              <LuBuilding className="h-5 w-5" />
+              <LuBuilding2 className="h-5 w-5" />
               Departments
             </div>
           </button>

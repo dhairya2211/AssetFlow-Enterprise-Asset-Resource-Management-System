@@ -1,0 +1,212 @@
+/**
+ * Typography system — font sizes, line heights, letter spacing, and font weights.
+ */
+:root {
+  /* === FONT FAMILIES === */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-serif: 'Merriweather', 'Georgia', serif;
+
+  /* === FONT SIZES === */
+  --text-xs: 0.75rem;
+  --text-xs-line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm-line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base-line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg-line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl-line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl-line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl-line-height: 2.25rem;
+  --text-4xl: 2.25rem;
+  --text-4xl-line-height: 2.5rem;
+  --text-5xl: 3rem;
+  --text-5xl-line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl-line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl-line-height: 1;
+  --text-8xl: 6rem;
+  --text-8xl-line-height: 1;
+  --text-9xl: 8rem;
+  --text-9xl-line-height: 1;
+
+  /* === FONT WEIGHTS === */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* === LETTER SPACING === */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* === LINE HEIGHTS === */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* === TYPOGRAPHY SCALE === */
+  --display-xs: 2.625rem;
+  --display-xs-line-height: 3.125rem;
+  --display-sm: 3rem;
+  --display-sm-line-height: 3.625rem;
+  --display-md: 3.75rem;
+  --display-md-line-height: 4.5rem;
+  --display-lg: 4.5rem;
+  --display-lg-line-height: 5.5rem;
+  --display-xl: 6rem;
+  --display-xl-line-height: 7.25rem;
+  --display-2xl: 8rem;
+  --display-2xl-line-height: 9.25rem;
+
+  /* === HEADING TYPOGRAPHY === */
+  --heading-h1: 2.25rem;
+  --heading-h1-line-height: 2.5rem;
+  --heading-h1-weight: 700;
+  --heading-h1-spacing: -0.025em;
+
+  --heading-h2: 1.875rem;
+  --heading-h2-line-height: 2.25rem;
+  --heading-h2-weight: 600;
+  --heading-h2-spacing: -0.025em;
+
+  --heading-h3: 1.5rem;
+  --heading-h3-line-height: 2rem;
+  --heading-h3-weight: 600;
+  --heading-h3-spacing: 0em;
+
+  --heading-h4: 1.25rem;
+  --heading-h4-line-height: 1.75rem;
+  --heading-h4-weight: 600;
+  --heading-h4-spacing: 0em;
+
+  --heading-h5: 1.125rem;
+  --heading-h5-line-height: 1.75rem;
+  --heading-h5-weight: 500;
+  --heading-h5-spacing: 0em;
+
+  --heading-h6: 1rem;
+  --heading-h6-line-height: 1.5rem;
+  --heading-h6-weight: 500;
+  --heading-h6-spacing: 0em;
+
+  /* === BODY TYPOGRAPHY === */
+  --body-large: 1.125rem;
+  --body-large-line-height: 1.75rem;
+  --body-large-weight: 400;
+
+  --body-base: 1rem;
+  --body-base-line-height: 1.5rem;
+  --body-base-weight: 400;
+
+  --body-small: 0.875rem;
+  --body-small-line-height: 1.25rem;
+  --body-small-weight: 400;
+
+  --body-xs: 0.75rem;
+  --body-xs-line-height: 1rem;
+  --body-xs-weight: 400;
+
+  /* === LABEL TYPOGRAPHY === */
+  --label-large: 0.875rem;
+  --label-large-line-height: 1.25rem;
+  --label-large-weight: 500;
+
+  --label-base: 0.75rem;
+  --label-base-line-height: 1rem;
+  --label-base-weight: 500;
+
+  --label-small: 0.625rem;
+  --label-small-line-height: 0.875rem;
+  --label-small-weight: 500;
+
+  /* === CODE TYPOGRAPHY === */
+  --code-inline: 0.875rem;
+  --code-inline-line-height: 1.25rem;
+  --code-block: 0.875rem;
+  --code-block-line-height: 1.5rem;
+}
+
+@layer base {
+  h1 {
+    font-size: var(--heading-h1);
+    line-height: var(--heading-h1-line-height);
+    font-weight: var(--heading-h1-weight);
+    letter-spacing: var(--heading-h1-spacing);
+  }
+
+  h2 {
+    font-size: var(--heading-h2);
+    line-height: var(--heading-h2-line-height);
+    font-weight: var(--heading-h2-weight);
+    letter-spacing: var(--heading-h2-spacing);
+  }
+
+  h3 {
+    font-size: var(--heading-h3);
+    line-height: var(--heading-h3-line-height);
+    font-weight: var(--heading-h3-weight);
+    letter-spacing: var(--heading-h3-spacing);
+  }
+
+  h4 {
+    font-size: var(--heading-h4);
+    line-height: var(--heading-h4-line-height);
+    font-weight: var(--heading-h4-weight);
+    letter-spacing: var(--heading-h4-spacing);
+  }
+
+  h5 {
+    font-size: var(--heading-h5);
+    line-height: var(--heading-h5-line-height);
+    font-weight: var(--heading-h5-weight);
+    letter-spacing: var(--heading-h5-spacing);
+  }
+
+  h6 {
+    font-size: var(--heading-h6);
+    line-height: var(--heading-h6-line-height);
+    font-weight: var(--heading-h6-weight);
+    letter-spacing: var(--heading-h6-spacing);
+  }
+
+  p {
+    font-size: var(--body-base);
+    line-height: var(--body-base-line-height);
+    font-weight: var(--body-base-weight);
+  }
+
+  small {
+    font-size: var(--body-small);
+    line-height: var(--body-small-line-height);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: var(--code-inline);
+    line-height: var(--code-inline-line-height);
+  }
+
+  pre {
+    font-family: var(--font-mono);
+    font-size: var(--code-block);
+    line-height: var(--code-block-line-height);
+  }
+}

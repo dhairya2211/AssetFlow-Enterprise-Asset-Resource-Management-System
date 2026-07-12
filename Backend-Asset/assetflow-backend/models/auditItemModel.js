@@ -87,8 +87,9 @@ const AuditItemModel = {
   /**
    * Create new audit item
    */
-  create: async (auditItem) => {
-    const [result] = await pool.query(
+  create: async (auditItem, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'INSERT INTO audit_items (audit_id, asset_id, verification_status, remarks) VALUES (?, ?, ?, ?)',
       [
         auditItem.audit_id,
@@ -103,14 +104,15 @@ const AuditItemModel = {
   /**
    * Create multiple audit items
    */
-  createBulk: async (auditItems) => {
+  createBulk: async (auditItems, connection = null) => {
+    const db = connection || pool;
     const values = auditItems.map(item => [
       item.audit_id,
       item.asset_id,
       item.verification_status || 'verified',
       item.remarks || null
     ]);
-    const [result] = await pool.query(
+    const [result] = await db.query(
       'INSERT INTO audit_items (audit_id, asset_id, verification_status, remarks) VALUES ?',
       [values]
     );
@@ -120,8 +122,9 @@ const AuditItemModel = {
   /**
    * Update audit item
    */
-  update: async (id, auditItem) => {
-    const [result] = await pool.query(
+  update: async (id, auditItem, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE audit_items SET verification_status = ?, remarks = ? WHERE id = ?',
       [auditItem.verification_status, auditItem.remarks, id]
     );
@@ -131,24 +134,27 @@ const AuditItemModel = {
   /**
    * Update verification status
    */
-  updateVerificationStatus: async (id, status) => {
-    const [result] = await pool.query('UPDATE audit_items SET verification_status = ? WHERE id = ?', [status, id]);
+  updateVerificationStatus: async (id, status, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('UPDATE audit_items SET verification_status = ? WHERE id = ?', [status, id]);
     return result.affectedRows;
   },
 
   /**
    * Delete audit item
    */
-  delete: async (id) => {
-    const [result] = await pool.query('DELETE FROM audit_items WHERE id = ?', [id]);
+  delete: async (id, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('DELETE FROM audit_items WHERE id = ?', [id]);
     return result.affectedRows;
   },
 
   /**
    * Delete all items for an audit
    */
-  deleteByAuditId: async (auditId) => {
-    const [result] = await pool.query('DELETE FROM audit_items WHERE audit_id = ?', [auditId]);
+  deleteByAuditId: async (auditId, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('DELETE FROM audit_items WHERE audit_id = ?', [auditId]);
     return result.affectedRows;
   }
 };

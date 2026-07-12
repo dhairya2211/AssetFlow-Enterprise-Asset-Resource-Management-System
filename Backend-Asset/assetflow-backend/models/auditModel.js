@@ -72,8 +72,9 @@ const AuditModel = {
   /**
    * Create new audit
    */
-  create: async (audit) => {
-    const [result] = await pool.query(
+  create: async (audit, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'INSERT INTO audits (audit_name, department_id, auditor, start_date, end_date, status) VALUES (?, ?, ?, ?, ?, ?)',
       [
         audit.audit_name,
@@ -90,8 +91,9 @@ const AuditModel = {
   /**
    * Update audit
    */
-  update: async (id, audit) => {
-    const [result] = await pool.query(
+  update: async (id, audit, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE audits SET audit_name = ?, department_id = ?, auditor = ?, start_date = ?, end_date = ? WHERE id = ?',
       [audit.audit_name, audit.department_id, audit.auditor, audit.start_date, audit.end_date, id]
     );
@@ -101,16 +103,18 @@ const AuditModel = {
   /**
    * Update audit status
    */
-  updateStatus: async (id, status) => {
-    const [result] = await pool.query('UPDATE audits SET status = ? WHERE id = ?', [status, id]);
+  updateStatus: async (id, status, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('UPDATE audits SET status = ? WHERE id = ?', [status, id]);
     return result.affectedRows;
   },
 
   /**
    * Delete audit
    */
-  delete: async (id) => {
-    const [result] = await pool.query('DELETE FROM audits WHERE id = ?', [id]);
+  delete: async (id, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('DELETE FROM audits WHERE id = ?', [id]);
     return result.affectedRows;
   }
 };

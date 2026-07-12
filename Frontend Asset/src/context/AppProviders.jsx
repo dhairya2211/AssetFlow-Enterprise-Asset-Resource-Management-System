@@ -1,5 +1,6 @@
 import { AuthProvider } from './AuthContext'
 import { ThemeProvider } from './ThemeContext'
+import { ToastProvider } from '@/components'
 
 /**
  * Composes all global context providers in the correct order.
@@ -8,7 +9,9 @@ import { ThemeProvider } from './ThemeContext'
 export function AppProviders({ children }) {
   return (
     <ThemeProvider>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </AuthProvider>
     </ThemeProvider>
   )
 }

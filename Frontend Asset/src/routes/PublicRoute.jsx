@@ -12,7 +12,7 @@ export function PublicRoute() {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <span className="text-sm text-[rgb(var(--color-text-secondary))]">Loading…</span>
+        <span className="text-sm text-gray-600">Loading…</span>
       </div>
     )
   }

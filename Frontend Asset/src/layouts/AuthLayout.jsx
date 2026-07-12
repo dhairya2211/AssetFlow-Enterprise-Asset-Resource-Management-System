@@ -10,10 +10,10 @@ import { Outlet } from 'react-router-dom'
  */
 export function AuthLayout({ headerContent = null, footerContent = null, className = '' }) {
   return (
-    <div className={`flex min-h-screen flex-col bg-[rgb(var(--color-background))] ${className}`}>
+    <div className={`flex min-h-screen flex-col bg-slate-50 ${className}`}>
       {/* Optional Header */}
       {headerContent && (
-        <div className="border-b border-[rgb(var(--color-border))] bg-[rgb(var(--color-surface))] px-4 py-4">
+        <div className="border-b border-slate-200 bg-white px-4 py-4">
           {headerContent}
         </div>
       )}
@@ -27,7 +27,7 @@ export function AuthLayout({ headerContent = null, footerContent = null, classNa
 
       {/* Optional Footer */}
       {footerContent && (
-        <div className="border-t border-[rgb(var(--color-border))] bg-[rgb(var(--color-surface))] px-4 py-4">
+        <div className="border-t border-slate-200 bg-white px-4 py-4">
           {footerContent}
         </div>
       )}
@@ -39,21 +39,21 @@ export function AuthLayout({ headerContent = null, footerContent = null, classNa
  * Split auth layout with branding on left, form on right
  * For desktop displays
  */
-export function SplitAuthLayout({ 
-  leftContent = null, 
+export function SplitAuthLayout({
+  leftContent = null,
   rightContent = null,
-  className = '' 
+  className = ''
 }) {
   return (
     <div className={`flex min-h-screen ${className}`}>
       {/* Left Side - Branding */}
-      <div className="hidden w-1/2 flex-col items-center justify-center bg-[rgb(var(--color-primary-500))] p-12 lg:flex">
+      <div className="hidden w-1/2 flex-col items-center justify-center bg-blue-600 p-12 lg:flex">
         {leftContent || (
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-[rgb(var(--color-primary-foreground))]">
+            <h1 className="text-4xl font-bold text-white">
               AssetFlow
             </h1>
-            <p className="mt-4 text-lg text-[rgb(var(--color-primary-foreground))]/80">
+            <p className="mt-4 text-lg text-white/80">
               Enterprise Asset Management
             </p>
           </div>
@@ -61,7 +61,7 @@ export function SplitAuthLayout({
       </div>
 
       {/* Right Side - Form */}
-      <div className="flex w-full flex-1 items-center justify-center bg-[rgb(var(--color-background))] px-4 py-8 lg:w-1/2">
+      <div className="flex w-full flex-1 items-center justify-center bg-slate-50 px-4 py-8 lg:w-1/2">
         <div className="w-full max-w-md">
           <Outlet />
         </div>
@@ -75,7 +75,7 @@ export function SplitAuthLayout({
  */
 export function MinimalAuthLayout({ className = '' }) {
   return (
-    <div className={`flex min-h-screen items-center justify-center bg-[rgb(var(--color-background))] px-4 ${className}`}>
+    <div className={`flex min-h-screen items-center justify-center bg-slate-50 px-4 ${className}`}>
       <div className="w-full max-w-sm">
         <Outlet />
       </div>

@@ -1,4 +1,5 @@
 export { storage } from './storage'
+export { cn } from './cn'
 export {
   formatCurrency,
   formatNumber,

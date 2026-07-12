@@ -7,7 +7,7 @@ import {
   LuBox,
   LuPackage,
   LuWrench,
-  LuBarChart3,
+  LuTrendingUp,
   LuUsers,
   LuSettings,
   LuChevronLeft,
@@ -77,7 +77,7 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
       id: 'reports',
       label: 'Reports',
       path: '/reports',
-      icon: LuBarChart3,
+      icon: LuTrendingUp,
       roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.VIEWER],
     },
     {

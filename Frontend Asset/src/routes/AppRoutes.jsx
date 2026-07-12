@@ -5,7 +5,9 @@ import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
 import { RoleProtectedRoute, PermissionProtectedRoute } from './RoleProtectedRoute'
 import { LoadingRoute, PageLoadingRoute } from './LoadingRoute'
-import { NotFoundPage, UnauthorizedPage, ServerErrorPage } from './NotFoundPage'
+import { NotFoundPage } from './NotFoundPage'
+import { UnauthorizedPage } from './UnauthorizedPage'
+import { ServerErrorPage } from './ServerErrorPage'
 import { ROUTES, USER_ROLES } from '@/constants'
 
 /**
@@ -23,14 +25,14 @@ import { ROUTES, USER_ROLES } from '@/constants'
  */
 
 // --- Auth pages (lazy — implement in src/pages/auth/) ---
-// const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
-// const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'))
-// const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
-// const ResetPasswordPage = lazy(() => import('@/pages/auth/ResetPasswordPage'))
+const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
+const SignupPage = lazy(() => import('@/pages/auth/SignupPage'))
+const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
+const ResetPasswordPage = lazy(() => import('@/pages/auth/ResetPasswordPage'))
 // const VerifyEmailPage = lazy(() => import('@/pages/auth/VerifyEmailPage'))
 
 // --- Dashboard pages (lazy — implement in src/pages/) ---
-// const DashboardPage = lazy(() => import('@/pages/dashboard/DashboardPage'))
+const DashboardPage = lazy(() => import('@/pages/DashboardPage'))
 
 // --- Assets module pages (lazy — implement in src/pages/assets/) ---
 // const AssetsPage = lazy(() => import('@/pages/assets/AssetsPage'))
@@ -88,7 +90,7 @@ import { ROUTES, USER_ROLES } from '@/constants'
 function RouteFallback() {
   return (
     <div className="flex min-h-[200px] items-center justify-center">
-      <span className="text-sm text-[rgb(var(--color-text-secondary))]">Loading…</span>
+      <span className="text-sm text-gray-600">Loading…</span>
     </div>
   )
 }
@@ -98,13 +100,14 @@ export function AppRoutes() {
     <Suspense fallback={<RouteFallback />}>
       <Routes>
         <Route element={<RootLayout />}>
+
           {/* === PUBLIC AUTH ROUTES === */}
           <Route element={<PublicRoute />}>
             <Route element={<AuthLayout />}>
-              {/* <Route path={ROUTES.LOGIN} element={<LoginPage />} /> */}
-              {/* <Route path={ROUTES.REGISTER} element={<RegisterPage />} /> */}
-              {/* <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} /> */}
-              {/* <Route path={ROUTES.RESET_PASSWORD} element={<ResetPasswordPage />} /> */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
               {/* <Route path={ROUTES.VERIFY_EMAIL} element={<VerifyEmailPage />} /> */}
             </Route>
           </Route>
@@ -113,10 +116,10 @@ export function AppRoutes() {
           <Route element={<ProtectedRoute />}>
             <Route element={<DashboardLayout />}>
               {/* Default redirect */}
-              {/* <Route index element={<Navigate to={ROUTES.DASHBOARD} replace />} /> */}
+          <Route index element={<Navigate to={ROUTES.DASHBOARD} replace />} />
 
               {/* Dashboard */}
-              {/* <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} /> */}
+              <Route path="/dashboard" element={<DashboardPage />} />
 
               {/* === ASSETS MODULE (Nested Routes) === */}
               {/* <Route path={ROUTES.ASSETS} element={<AssetsPage />} /> */}

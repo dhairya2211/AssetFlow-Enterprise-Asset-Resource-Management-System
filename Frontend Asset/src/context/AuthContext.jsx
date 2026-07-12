@@ -6,7 +6,16 @@ import { storage } from '@/utils'
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => authService.getStoredUser())
+  const [user, setUser] = useState(() => {
+    const storedUser = authService.getStoredUser()
+    if (!storedUser) {
+      // Auto login a default user for demo
+      const defaultUser = { id: 1, name: 'Alex Wilson', email: 'alex@company.com', role: 'admin', avatar: 'AW' }
+      authService.persistSession({ accessToken: 'mock-access-token-12345', refreshToken: 'mock-refresh-token-12345', user: defaultUser })
+      return defaultUser
+    }
+    return storedUser
+  })
   const [isLoading, setIsLoading] = useState(false)
 
   const isAuthenticated = useMemo(() => authService.isAuthenticated(), [user])

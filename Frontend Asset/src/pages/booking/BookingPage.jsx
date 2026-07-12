@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, DataTable, Drawer, Badge } from '@/components'
-import { LuPlus, LuCalendar, LuClock, LuBuilding } from 'react-icons/lu'
+import { LuPlus, LuCalendar, LuClock, LuBuilding2 } from 'react-icons/lu'
 
 export function BookingPage() {
   const [isBookingDrawerOpen, setIsBookingDrawerOpen] = useState(false)
@@ -100,7 +100,7 @@ export function BookingPage() {
           <Card className="p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-purple-100">
-                <LuBuilding className="h-6 w-6 text-purple-600" />
+                <LuBuilding2 className="h-6 w-6 text-purple-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-slate-900">6</p>

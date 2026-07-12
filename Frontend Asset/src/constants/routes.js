@@ -19,7 +19,12 @@ export const ROUTES = {
   ASSET_CREATE: '/assets/new',
   ASSET_EDIT: '/assets/:id/edit',
   ASSET_CATEGORIES: '/assets/categories',
-  
+  // Allocation Module (Nested)
+  ALLOCATION: '/allocation',
+
+  // Booking Module (Nested)
+  BOOKING: '/booking',
+
   // Inventory Module (Nested)
   INVENTORY: '/inventory',
   INVENTORY_STOCK: '/inventory/stock',
@@ -65,6 +70,20 @@ export const ROUTES = {
   SETTINGS_SECURITY: '/settings/security',
   SETTINGS_INTEGRATIONS: '/settings/integrations',
   SETTINGS_AUDIT_LOG: '/settings/audit-log',
+
+  // Organization Module (Nested)
+  ORGANIZATION: '/organization',
+  ORGANIZATION_DEPARTMENTS: '/organization/departments',
+  ORGANIZATION_EMPLOYEES: '/organization/employees',
+
+  // Audit Module (Nested)
+  AUDIT: '/audit',
+
+  // Notifications Module
+  NOTIFICATIONS: '/notifications',
+
+  // Profile Module
+  PROFILE: '/profile',
 
   // Error Pages
   NOT_FOUND: '/404',
@@ -169,6 +188,24 @@ export const ROUTE_CONFIG = {
     breadcrumb: true,
     allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER],
     parent: ROUTES.ASSETS,
+  },
+  [ROUTES.ALLOCATION]: {
+    title: 'Allocation',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'allocation',
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER],
+    parent: null,
+  },
+  [ROUTES.BOOKING]: {
+    title: 'Booking',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'booking',
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: null,
   },
   [ROUTES.INVENTORY]: {
     title: 'Inventory',
@@ -453,6 +490,58 @@ export const ROUTE_CONFIG = {
     allowedRoles: [USER_ROLES.ADMIN],
     parent: ROUTES.SETTINGS,
   },
+  [ROUTES.ORGANIZATION]: {
+    title: 'Organization',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'organization',
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: null,
+  },
+  [ROUTES.ORGANIZATION_DEPARTMENTS]: {
+    title: 'Departments',
+    isPublic: false,
+    showInNav: false,
+    breadcrumb: true,
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: ROUTES.ORGANIZATION,
+  },
+  [ROUTES.ORGANIZATION_EMPLOYEES]: {
+    title: 'Employees',
+    isPublic: false,
+    showInNav: false,
+    breadcrumb: true,
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: ROUTES.ORGANIZATION,
+  },
+  [ROUTES.AUDIT]: {
+    title: 'Audit',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'audit',
+    allowedRoles: [USER_ROLES.ADMIN],
+    parent: null,
+  },
+  [ROUTES.NOTIFICATIONS]: {
+    title: 'Notifications',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'notifications',
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: null,
+  },
+  [ROUTES.PROFILE]: {
+    title: 'Profile',
+    isPublic: false,
+    showInNav: true,
+    breadcrumb: true,
+    icon: 'profile',
+    allowedRoles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.SUPERVISOR, USER_ROLES.USER, USER_ROLES.VIEWER],
+    parent: null,
+  },
   [ROUTES.NOT_FOUND]: {
     title: 'Page Not Found',
     isPublic: true,
@@ -480,12 +569,18 @@ export const ROUTE_CONFIG = {
 export const NAV_ITEMS = [
   { label: 'Dashboard', path: ROUTES.DASHBOARD, icon: 'dashboard' },
   { label: 'Assets', path: ROUTES.ASSETS, icon: 'assets' },
+  { label: 'Allocation', path: ROUTES.ALLOCATION, icon: 'allocation' },
+  { label: 'Booking', path: ROUTES.BOOKING, icon: 'booking' },
   { label: 'Inventory', path: ROUTES.INVENTORY, icon: 'inventory' },
   { label: 'Procurement', path: ROUTES.PROCUREMENT, icon: 'procurement' },
   { label: 'Maintenance', path: ROUTES.MAINTENANCE, icon: 'maintenance' },
   { label: 'Reports', path: ROUTES.REPORTS, icon: 'reports' },
+  { label: 'Audit', path: ROUTES.AUDIT, icon: 'audit' },
+  { label: 'Notifications', path: ROUTES.NOTIFICATIONS, icon: 'notifications' },
+  { label: 'Organization', path: ROUTES.ORGANIZATION, icon: 'organization' },
   { label: 'Users', path: ROUTES.USERS, icon: 'users' },
   { label: 'Settings', path: ROUTES.SETTINGS, icon: 'settings' },
+  { label: 'Profile', path: ROUTES.PROFILE, icon: 'profile' },
 ]
 
 /**

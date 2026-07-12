@@ -7,7 +7,7 @@ const AssetAllocationModel = {
   getAll: async () => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -25,7 +25,7 @@ const AssetAllocationModel = {
   getById: async (id) => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -43,7 +43,7 @@ const AssetAllocationModel = {
   getByAsset: async (assetId) => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -62,7 +62,7 @@ const AssetAllocationModel = {
   getByUser: async (userId) => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -81,7 +81,7 @@ const AssetAllocationModel = {
   getActive: async () => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -100,7 +100,7 @@ const AssetAllocationModel = {
   getOverdue: async () => {
     const [rows] = await pool.query(`
       SELECT aa.*, 
-             a.asset_name, a.asset_tag, 
+             a.asset_name, a.asset_tag, a.department_id,
              u.full_name, u.employee_id,
              d.name as department_name
       FROM asset_allocations aa
@@ -116,8 +116,9 @@ const AssetAllocationModel = {
   /**
    * Create new allocation
    */
-  create: async (allocation) => {
-    const [result] = await pool.query(
+  create: async (allocation, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'INSERT INTO asset_allocations (asset_id, user_id, allocated_date, expected_return, status, remarks) VALUES (?, ?, ?, ?, ?, ?)',
       [
         allocation.asset_id,
@@ -145,10 +146,23 @@ const AssetAllocationModel = {
   /**
    * Return asset (update allocation with return date)
    */
-  returnAsset: async (id, returnDate = null) => {
-    const [result] = await pool.query(
+  returnAsset: async (id, returnDate = null, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE asset_allocations SET returned_date = ?, status = ? WHERE id = ?',
       [returnDate || new Date().toISOString().split('T')[0], 'returned', id]
+    );
+    return result.affectedRows;
+  },
+
+  /**
+   * Update allocation owner (used during transfer approval)
+   */
+  updateOwner: async (id, userId, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
+      'UPDATE asset_allocations SET user_id = ? WHERE id = ?',
+      [userId, id]
     );
     return result.affectedRows;
   },

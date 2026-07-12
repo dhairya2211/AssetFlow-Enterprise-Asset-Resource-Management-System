@@ -156,8 +156,9 @@ const TransferRequestModel = {
   /**
    * Approve transfer request
    */
-  approve: async (id, approvedBy) => {
-    const [result] = await pool.query(
+  approve: async (id, approvedBy, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE transfer_requests SET status = ?, approved_by = ?, approved_at = CURRENT_TIMESTAMP WHERE id = ?',
       ['approved', approvedBy, id]
     );
@@ -167,8 +168,9 @@ const TransferRequestModel = {
   /**
    * Reject transfer request
    */
-  reject: async (id, approvedBy) => {
-    const [result] = await pool.query(
+  reject: async (id, approvedBy, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE transfer_requests SET status = ?, approved_by = ?, approved_at = CURRENT_TIMESTAMP WHERE id = ?',
       ['rejected', approvedBy, id]
     );

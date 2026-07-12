@@ -7,14 +7,8 @@ const assetRoutes = require('./assetRoutes');
 const assetAllocationRoutes = require('./assetAllocationRoutes');
 const transferRoutes = require('./transferRoutes');
 const resourceBookingRoutes = require('./resourceBookingRoutes');
-const maintenanceRoutes = require('./maintenanceRoutes');
-const auditRoutes = require('./auditRoutes');
-const dashboardRoutes = require('./dashboardRoutes');
-const reportRoutes = require('./reportRoutes');
-const notificationRoutes = require('./notificationRoutes');
 
 const router = express.Router();
-
 
 // ============================================
 // API Root Welcome Route
@@ -49,19 +43,10 @@ router.use('/transfers', transferRoutes);
 // Resource Booking Routes
 router.use('/bookings', resourceBookingRoutes);
 
-// Maintenance Routes
-router.use('/maintenance', maintenanceRoutes);
-
-// Audit Routes
-router.use('/audits', auditRoutes);
-
-// Dashboard Routes
-router.use('/dashboard', dashboardRoutes);
-
-// Report Routes
-router.use('/reports', reportRoutes);
-
-// Notification Routes
-router.use('/notifications', notificationRoutes);
+/**
+ * Future routes will be mounted here:
+ *   router.use('/maintenance', maintenanceRoutes);
+ *   router.use('/audits', auditRoutes);
+ */
 
 module.exports = router;

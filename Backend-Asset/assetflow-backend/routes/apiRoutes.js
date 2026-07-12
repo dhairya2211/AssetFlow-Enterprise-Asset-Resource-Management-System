@@ -7,8 +7,21 @@ const assetRoutes = require('./assetRoutes');
 const assetAllocationRoutes = require('./assetAllocationRoutes');
 const transferRoutes = require('./transferRoutes');
 const resourceBookingRoutes = require('./resourceBookingRoutes');
+const maintenanceRoutes = require('./maintenanceRoutes');
+const auditRoutes = require('./auditRoutes');
 
 const router = express.Router();
+
+
+// ============================================
+// API Root Welcome Route
+// ============================================
+router.get('/', (req, res) => {
+    res.status(200).json({
+        status: "OK",
+        message: "Welcome to the AssetFlow API v1"
+    });
+});
 
 /**
  * API v1 Route Group
@@ -33,10 +46,10 @@ router.use('/transfers', transferRoutes);
 // Resource Booking Routes
 router.use('/bookings', resourceBookingRoutes);
 
-/**
- * Future routes will be mounted here:
- *   router.use('/maintenance', maintenanceRoutes);
- *   router.use('/audits', auditRoutes);
- */
+// Maintenance Routes
+router.use('/maintenance', maintenanceRoutes);
+
+// Audit Routes
+router.use('/audits', auditRoutes);
 
 module.exports = router;

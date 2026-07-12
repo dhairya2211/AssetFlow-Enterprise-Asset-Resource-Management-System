@@ -154,8 +154,9 @@ const MaintenanceRequestModel = {
   /**
    * Create new maintenance request
    */
-  create: async (maintenance) => {
-    const [result] = await pool.query(
+  create: async (maintenance, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'INSERT INTO maintenance_requests (asset_id, requested_by, issue, priority, status, assigned_to) VALUES (?, ?, ?, ?, ?, ?)',
       [
         maintenance.asset_id,
@@ -172,8 +173,9 @@ const MaintenanceRequestModel = {
   /**
    * Update maintenance request
    */
-  update: async (id, maintenance) => {
-    const [result] = await pool.query(
+  update: async (id, maintenance, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE maintenance_requests SET issue = ?, priority = ?, assigned_to = ? WHERE id = ?',
       [maintenance.issue, maintenance.priority, maintenance.assigned_to, id]
     );
@@ -183,8 +185,9 @@ const MaintenanceRequestModel = {
   /**
    * Assign maintenance request
    */
-  assign: async (id, assignedTo) => {
-    const [result] = await pool.query(
+  assign: async (id, assignedTo, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE maintenance_requests SET assigned_to = ?, status = ? WHERE id = ?',
       [assignedTo, 'in_progress', id]
     );
@@ -194,8 +197,9 @@ const MaintenanceRequestModel = {
   /**
    * Resolve maintenance request
    */
-  resolve: async (id) => {
-    const [result] = await pool.query(
+  resolve: async (id, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query(
       'UPDATE maintenance_requests SET status = ?, resolved_at = CURRENT_TIMESTAMP WHERE id = ?',
       ['resolved', id]
     );

@@ -10,6 +10,16 @@ const resourceBookingRoutes = require('./resourceBookingRoutes');
 
 const router = express.Router();
 
+// ============================================
+// API Root Welcome Route
+// ============================================
+router.get('/', (req, res) => {
+    res.status(200).json({
+        status: "OK",
+        message: "Welcome to the AssetFlow API v1"
+    });
+});
+
 /**
  * API v1 Route Group
  * Feature routes mounted here:

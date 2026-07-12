@@ -37,9 +37,9 @@ const DashboardPage = lazy(() => import('@/pages/DashboardPage'))
 // --- Assets module pages (lazy — implement in src/pages/assets/) ---
 const AssetsPage = lazy(() => import('@/pages/assets/AssetsPage'))
 // const AssetDetailPage = lazy(() => import('@/pages/assets/AssetDetailPage'))
-// const AssetCreatePage = lazy(() => import('@/pages/assets/AssetCreatePage'))
+const AssetCreatePage = lazy(() => import('@/pages/assets/AssetCreatePage'))
 // const AssetEditPage = lazy(() => import('@/pages/assets/AssetEditPage'))
-// const AssetCategoriesPage = lazy(() => import('@/pages/assets/AssetCategoriesPage'))
+const AssetCategoriesPage = lazy(() => import('@/pages/assets/AssetCategoriesPage'))
 
 // --- Allocation module pages (lazy — implement in src/pages/allocation/) ---
 const AllocationPage = lazy(() => import('@/pages/allocation/AllocationPage'))
@@ -63,18 +63,18 @@ const NotificationsPage = lazy(() => import('@/pages/notifications/Notifications
 const ProfilePage = lazy(() => import('@/pages/profile/ProfilePage'))
 
 // --- Inventory module pages (lazy — implement in src/pages/inventory/) ---
-// const InventoryPage = lazy(() => import('@/pages/inventory/InventoryPage'))
-// const InventoryStockPage = lazy(() => import('@/pages/inventory/InventoryStockPage'))
-// const InventoryMovementsPage = lazy(() => import('@/pages/inventory/InventoryMovementsPage'))
-// const InventoryLocationsPage = lazy(() => import('@/pages/inventory/InventoryLocationsPage'))
+const InventoryPage = lazy(() => import('@/pages/inventory/InventoryPage'))
+const InventoryStockPage = lazy(() => import('@/pages/inventory/InventoryStockPage'))
+const InventoryMovementsPage = lazy(() => import('@/pages/inventory/InventoryMovementsPage'))
+const InventoryLocationsPage = lazy(() => import('@/pages/inventory/InventoryLocationsPage'))
 
 // --- Procurement module pages (lazy — implement in src/pages/procurement/) ---
-// const ProcurementPage = lazy(() => import('@/pages/procurement/ProcurementPage'))
-// const ProcurementOrdersPage = lazy(() => import('@/pages/procurement/ProcurementOrdersPage'))
+const ProcurementPage = lazy(() => import('@/pages/procurement/ProcurementPage'))
+const ProcurementOrdersPage = lazy(() => import('@/pages/procurement/ProcurementOrdersPage'))
 // const ProcurementOrderDetailPage = lazy(() => import('@/pages/procurement/ProcurementOrderDetailPage'))
-// const ProcurementVendorsPage = lazy(() => import('@/pages/procurement/ProcurementVendorsPage'))
+const ProcurementVendorsPage = lazy(() => import('@/pages/procurement/ProcurementVendorsPage'))
 // const ProcurementVendorDetailPage = lazy(() => import('@/pages/procurement/ProcurementVendorDetailPage'))
-// const ProcurementRequestsPage = lazy(() => import('@/pages/procurement/ProcurementRequestsPage'))
+const ProcurementRequestsPage = lazy(() => import('@/pages/procurement/ProcurementRequestsPage'))
 
 // --- Maintenance module pages (lazy — implement in src/pages/maintenance/) ---
 // const MaintenancePage = lazy(() => import('@/pages/maintenance/MaintenancePage'))
@@ -92,11 +92,11 @@ const ProfilePage = lazy(() => import('@/pages/profile/ProfilePage'))
 // const ReportsCustomPage = lazy(() => import('@/pages/reports/ReportsCustomPage'))
 
 // --- Users module pages (lazy — implement in src/pages/users/) ---
-// const UsersPage = lazy(() => import('@/pages/users/UsersPage'))
+const UsersPage = lazy(() => import('@/pages/users/UsersPage'))
 // const UserDetailPage = lazy(() => import('@/pages/users/UserDetailPage'))
-// const UserCreatePage = lazy(() => import('@/pages/users/UserCreatePage'))
+const UserCreatePage = lazy(() => import('@/pages/users/UserCreatePage'))
 // const UserEditPage = lazy(() => import('@/pages/users/UserEditPage'))
-// const UsersRolesPage = lazy(() => import('@/pages/users/UsersRolesPage'))
+const UsersRolesPage = lazy(() => import('@/pages/users/UsersRolesPage'))
 // const UsersPermissionsPage = lazy(() => import('@/pages/users/UsersPermissionsPage'))
 
 // --- Organization module pages (lazy — implement in src/pages/organization/) ---
@@ -105,7 +105,7 @@ const OrganizationPage = lazy(() => import('@/pages/organization/OrganizationPag
 // const EmployeesPage = lazy(() => import('@/pages/organization/EmployeesPage'))
 
 // --- Settings module pages (lazy — implement in src/pages/settings/) ---
-// const SettingsPage = lazy(() => import('@/pages/settings/SettingsPage'))
+const SettingsPage = lazy(() => import('@/pages/settings/SettingsPage'))
 // const SettingsOrganizationPage = lazy(() => import('@/pages/settings/SettingsOrganizationPage'))
 // const SettingsPreferencesPage = lazy(() => import('@/pages/settings/SettingsPreferencesPage'))
 // const SettingsNotificationsPage = lazy(() => import('@/pages/settings/SettingsNotificationsPage'))
@@ -150,9 +150,9 @@ export function AppRoutes() {
               {/* === ASSETS MODULE (Nested Routes) === */}
               <Route path={ROUTES.ASSETS} element={<AssetsPage />} />
               {/* <Route path={ROUTES.ASSET_DETAIL} element={<AssetDetailPage />} /> */}
-              {/* <Route path={ROUTES.ASSET_CREATE} element={<AssetCreatePage />} /> */}
+              <Route path={ROUTES.ASSET_CREATE} element={<AssetCreatePage />} />
               {/* <Route path={ROUTES.ASSET_EDIT} element={<AssetEditPage />} /> */}
-              {/* <Route path={ROUTES.ASSET_CATEGORIES} element={<AssetCategoriesPage />} /> */}
+              <Route path={ROUTES.ASSET_CATEGORIES} element={<AssetCategoriesPage />} />
               
               {/* === ALLOCATION MODULE (Nested Routes) === */}
               <Route path={ROUTES.ALLOCATION} element={<AllocationPage />} />
@@ -185,18 +185,18 @@ export function AppRoutes() {
               <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 
               {/* === INVENTORY MODULE (Nested Routes) === */}
-              {/* <Route path={ROUTES.INVENTORY} element={<InventoryPage />} /> */}
-              {/* <Route path={ROUTES.INVENTORY_STOCK} element={<InventoryStockPage />} /> */}
-              {/* <Route path={ROUTES.INVENTORY_MOVEMENTS} element={<InventoryMovementsPage />} /> */}
-              {/* <Route path={ROUTES.INVENTORY_LOCATIONS} element={<InventoryLocationsPage />} /> */}
+              <Route path={ROUTES.INVENTORY} element={<InventoryPage />} />
+              <Route path={ROUTES.INVENTORY_STOCK} element={<InventoryStockPage />} />
+              <Route path={ROUTES.INVENTORY_MOVEMENTS} element={<InventoryMovementsPage />} />
+              <Route path={ROUTES.INVENTORY_LOCATIONS} element={<InventoryLocationsPage />} />
 
               {/* === PROCUREMENT MODULE (Nested Routes) === */}
-              {/* <Route path={ROUTES.PROCUREMENT} element={<ProcurementPage />} /> */}
-              {/* <Route path={ROUTES.PROCUREMENT_ORDERS} element={<ProcurementOrdersPage />} /> */}
+              <Route path={ROUTES.PROCUREMENT} element={<ProcurementPage />} />
+              <Route path={ROUTES.PROCUREMENT_ORDERS} element={<ProcurementOrdersPage />} />
               {/* <Route path={ROUTES.PROCUREMENT_ORDER_DETAIL} element={<ProcurementOrderDetailPage />} /> */}
-              {/* <Route path={ROUTES.PROCUREMENT_VENDORS} element={<ProcurementVendorsPage />} /> */}
+              <Route path={ROUTES.PROCUREMENT_VENDORS} element={<ProcurementVendorsPage />} />
               {/* <Route path={ROUTES.PROCUREMENT_VENDOR_DETAIL} element={<ProcurementVendorDetailPage />} /> */}
-              {/* <Route path={ROUTES.PROCUREMENT_REQUESTS} element={<ProcurementRequestsPage />} /> */}
+              <Route path={ROUTES.PROCUREMENT_REQUESTS} element={<ProcurementRequestsPage />} />
 
               {/* === ORGANIZATION MODULE (Nested Routes) === */}
               <Route path={ROUTES.ORGANIZATION} element={<OrganizationPage />} />
@@ -220,23 +220,21 @@ export function AppRoutes() {
 
               {/* === USERS MODULE (Nested Routes - Role Protected) === */}
               <Route element={<RoleProtectedRoute allowedRoles={[USER_ROLES.ADMIN, USER_ROLES.MANAGER]} />}>
-                {/* <Route path={ROUTES.USERS} element={<UsersPage />} /> */}
+                <Route path={ROUTES.USERS} element={<UsersPage />} />
                 {/* <Route path={ROUTES.USER_DETAIL} element={<UserDetailPage />} /> */}
-                {/* <Route path={ROUTES.USER_CREATE} element={<UserCreatePage />} /> */}
+                <Route path={ROUTES.USER_CREATE} element={<UserCreatePage />} />
                 {/* <Route path={ROUTES.USER_EDIT} element={<UserEditPage />} /> */}
               </Route>
 
               <Route element={<RoleProtectedRoute allowedRoles={[USER_ROLES.ADMIN]} />}>
-                {/* <Route path={ROUTES.USERS_ROLES} element={<UsersRolesPage />} /> */}
+                <Route path={ROUTES.USERS_ROLES} element={<UsersRolesPage />} />
                 {/* <Route path={ROUTES.USERS_PERMISSIONS} element={<UsersPermissionsPage />} /> */}
               </Route>
 
-              {/* === SETTINGS MODULE (Nested Routes - Role Protected) === */}
-              <Route element={<RoleProtectedRoute allowedRoles={[USER_ROLES.ADMIN, USER_ROLES.MANAGER]} />}>
-                {/* <Route path={ROUTES.SETTINGS} element={<SettingsPage />} /> */}
-                {/* <Route path={ROUTES.SETTINGS_PREFERENCES} element={<SettingsPreferencesPage />} /> */}
-                {/* <Route path={ROUTES.SETTINGS_NOTIFICATIONS} element={<SettingsNotificationsPage />} /> */}
-              </Route>
+              {/* === SETTINGS MODULE (Nested Routes) === */}
+              <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
+              {/* <Route path={ROUTES.SETTINGS_PREFERENCES} element={<SettingsPreferencesPage />} />
+              {/* <Route path={ROUTES.SETTINGS_NOTIFICATIONS} element={<SettingsNotificationsPage />} /> */}
 
               <Route element={<RoleProtectedRoute allowedRoles={[USER_ROLES.ADMIN]} />}>
                 {/* <Route path={ROUTES.SETTINGS_ORGANIZATION} element={<SettingsOrganizationPage />} /> */}

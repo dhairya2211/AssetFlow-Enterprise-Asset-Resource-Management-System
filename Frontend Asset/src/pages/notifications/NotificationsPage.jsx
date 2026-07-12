@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, Search, Filter, Badge, Avatar } from '@/components'
-import { LuBell, LuCheck, LuClock, LuAlertTriangle, LuUserPlus, LuPackage, LuWrench, LuTrendingUp } from 'react-icons/lu'
+import { LuBell, LuCheck, LuClock, LuUserPlus, LuPackage, LuWrench, LuTrendingUp } from 'react-icons/lu'
 
 export function NotificationsPage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -10,7 +10,7 @@ export function NotificationsPage() {
     { id: 2, type: 'success', title: 'Asset allocated', message: 'Laptop #123 has been allocated to Mike Chen', read: false, time: '15 minutes ago', icon: LuPackage },
     { id: 3, type: 'warning', title: 'Maintenance due', message: 'Printer maintenance is scheduled for tomorrow', read: true, time: '1 hour ago', icon: LuWrench },
     { id: 4, type: 'info', title: 'Report generated', message: 'Monthly asset report is ready for download', read: true, time: '2 hours ago', icon: LuTrendingUp },
-    { id: 5, type: 'danger', title: 'Low stock alert', message: 'Stationery items are running low', read: false, time: '3 hours ago', icon: LuAlertTriangle },
+    { id: 5, type: 'danger', title: 'Low stock alert', message: 'Stationery items are running low', read: false, time: '3 hours ago', icon: LuWrench },
   ])
 
   const activityTimeline = [

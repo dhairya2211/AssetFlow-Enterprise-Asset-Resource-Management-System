@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, DataTable, Filter, Badge } from '@/components'
-import { LuTrendingUp, LuDownload, LuBarChart, LuPieChart } from 'react-icons/lu'
+import { LuTrendingUp, LuDownload, LuPieChart } from 'react-icons/lu'
 
 export function ReportsPage() {
   const [activeFilters, setActiveFilters] = useState({})
@@ -82,7 +82,7 @@ export function ReportsPage() {
           <Card className="p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-green-100">
-                <LuBarChart className="h-6 w-6 text-green-600" />
+                <LuTrendingUp className="h-6 w-6 text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-slate-900">$124,500</p>

@@ -225,7 +225,7 @@ export function Sidebar({ collapsed = false, onToggle, className = '' }) {
           aria-expanded={hasChildren ? isExpanded : undefined}
           tabIndex={level === 0 ? 0 : -1}
         >
-          <Icon className={`h-5 w-5 flex-shrink-0 transition-colors ${isItemActive ? 'text-[rgb(var(--color-primary-600))]' : 'text-[rgb(var(--color-text-muted))]'}`} aria-hidden="true" />
+          {Icon && <Icon className={`h-5 w-5 flex-shrink-0 transition-colors ${isItemActive ? 'text-[rgb(var(--color-primary-600))]' : 'text-[rgb(var(--color-text-muted))]'}`} aria-hidden="true" />}
           {!collapsed && (
             <>
               <span className="flex-1 truncate">{item.label}</span>

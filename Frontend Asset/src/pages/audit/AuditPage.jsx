@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Card, Button, DataTable, Badge } from '@/components'
-import { LuCheck, LuAlertTriangle, LuSearch, LuClock } from 'react-icons/lu'
+import { LuCheck, LuWrench, LuSearch, LuClock } from 'react-icons/lu'
 
 export function AuditPage() {
   const [selectedAudit, setSelectedAudit] = useState(null)
@@ -100,7 +100,7 @@ export function AuditPage() {
           <Card className="p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-red-100">
-                <LuAlertTriangle className="h-6 w-6 text-red-600" />
+                <LuWrench className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-slate-900">8</p>

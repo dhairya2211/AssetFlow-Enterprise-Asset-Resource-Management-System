@@ -27,4 +27,26 @@ const testConnection = async () => {
   return true;
 };
 
-module.exports = { pool, testConnection };
+/**
+ * Execute a callback within a MySQL transaction.
+ * Commits on success, rolls back on failure.
+ * @param {Function} callback - Async function receiving the connection
+ * @returns {Promise<*>} Result from callback
+ */
+const withTransaction = async (callback) => {
+  const connection = await pool.getConnection();
+
+  try {
+    await connection.beginTransaction();
+    const result = await callback(connection);
+    await connection.commit();
+    return result;
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+};
+
+module.exports = { pool, testConnection, withTransaction };

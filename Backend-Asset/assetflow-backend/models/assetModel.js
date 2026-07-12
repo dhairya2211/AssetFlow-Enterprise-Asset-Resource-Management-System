@@ -174,8 +174,9 @@ const AssetModel = {
   /**
    * Update asset status
    */
-  updateStatus: async (id, status) => {
-    const [result] = await pool.query('UPDATE assets SET status = ? WHERE id = ?', [status, id]);
+  updateStatus: async (id, status, connection = null) => {
+    const db = connection || pool;
+    const [result] = await db.query('UPDATE assets SET status = ? WHERE id = ?', [status, id]);
     return result.affectedRows;
   },
 
